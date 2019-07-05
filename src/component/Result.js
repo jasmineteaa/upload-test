@@ -16,7 +16,22 @@ class Result extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+
+    if (e.target.value === '') {
+      this.setState({
+        contacts: this.props.contacts
+      });
+    }else {
+      const filterSearch = this.props.contacts.filter( item => {
+        return item.First_name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 || item.Last_name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1;
+      });
+      this.setState({
+        contacts: filterSearch
+      })
+    }
   };
+  // item.First_name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 || 
+  
   componentDidUpdate(prevProps) {
     if (this.props.contacts !== prevProps.contacts) {
       this.setState({
@@ -39,6 +54,7 @@ class Result extends Component {
                 value={this.state.filterInput}
                 id="filter"
                 onChange={this.handleChange}
+                onKeyDown={this.onKeyDown}
               />
             </div>
             ): null

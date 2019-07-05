@@ -13,7 +13,7 @@ class Search extends Component {
     this.state = {
       data,
       userInput: '',
-      contacts: ''
+      contacts: [],
     };
   }
   // user submit form, search through data return contact 
@@ -29,6 +29,9 @@ class Search extends Component {
         contacts: filtered
       })
     } else {
+      this.setState({
+        contacts: []
+      })
       console.log("no search results")
     }
   }
@@ -40,7 +43,6 @@ class Search extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.searchContact(this.state.userInput.toLowerCase());
-    console.log('submitted!')
   }
   render() {
     return (
@@ -60,7 +62,7 @@ class Search extends Component {
               <input type="submit" value="search"/>
           </form>
         </div>
-        <Result contacts={this.state.contacts}/>
+        <Result contacts={this.state.contacts} />
       </Fragment>
     );
   }
