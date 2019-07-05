@@ -7,7 +7,7 @@ import {data} from './data';
 import Upload from './component/Upload';
 import Search from './component/Search';
 
-import logo from './logo.svg';
+// import styles
 import './App.css';
 
 class App extends Component {

@@ -1,6 +1,9 @@
 import React, {Component, Fragment} from 'react'; 
 import {data} from '../data';
-import swal from 'sweetalert';
+
+// import components
+import Result from './Result';
+
 // Sorting, graphs, analytics are all allowed.We want to see a useful way to view this data
 // we are looking for a single page application
 
@@ -9,7 +12,8 @@ class Search extends Component {
     super();
     this.state = {
       data,
-      userInput: ''
+      userInput: '',
+      contacts: ''
     };
   }
   // user submit form, search through data return contact 
@@ -21,8 +25,9 @@ class Search extends Component {
     });
     console.log(filtered);
     if (filtered.length) {
-      // call other function 
-      console.log("return contact")
+      this.setState({
+        contacts: filtered
+      })
     } else {
       console.log("no search results")
     }
@@ -55,6 +60,7 @@ class Search extends Component {
               <input type="submit" value="search"/>
           </form>
         </div>
+        <Result contacts={this.state.contacts}/>
       </Fragment>
     );
   }
