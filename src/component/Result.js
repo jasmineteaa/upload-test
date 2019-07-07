@@ -5,7 +5,6 @@ import {data} from '../data';
 class Result extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props)
     this.state = {
       data,
       contacts: '',
@@ -30,7 +29,6 @@ class Result extends Component {
       })
     }
   };
-  // item.First_name.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1 || 
   
   componentDidUpdate(prevProps) {
     if (this.props.contacts !== prevProps.contacts) {

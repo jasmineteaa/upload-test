@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react'; 
-import {data} from '../data';
+import swal from 'sweetalert';
 
 // import components
 import Result from './Result';
@@ -8,13 +8,20 @@ import Result from './Result';
 // we are looking for a single page application
 
 class Search extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      data,
+      data: [],
       userInput: '',
       contacts: [],
     };
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.data !== prevProps.data){
+      this.setState({
+        data: this.props.data
+      })
+    }
   }
   // user submit form, search through data return contact 
   // return result
@@ -42,7 +49,15 @@ class Search extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    this.searchContact(this.state.userInput.toLowerCase());
+    if (this.state.userInput){
+      this.searchContact(this.state.userInput.toLowerCase());
+    }else {
+      swal({
+        title: 'oops',
+        text: 'please enter a search value',
+        icon: 'warning'
+      });
+    }
   }
   render() {
     return (
