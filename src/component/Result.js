@@ -15,6 +15,8 @@ class Result extends Component {
       filterInput: ''
     };
   }
+
+  // allow filter through returned contacts
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value

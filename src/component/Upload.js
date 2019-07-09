@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react'; 
+import swal from 'sweetalert';
 
 // import Components
 import Search from './Search';
-import swal from 'sweetalert';
 
 
 class Upload extends Component {
@@ -13,6 +13,8 @@ class Upload extends Component {
     };
   }
 
+
+  // handle when user upload file 
   handleFiles = e => {
     if (window.FileReader){
       let files = e.target.files;
@@ -25,6 +27,9 @@ class Upload extends Component {
       });
     }
   }
+
+
+  // read csv using filereader
   getAsText = (fileToRead) => {
     let reader = new FileReader();
 
@@ -32,12 +37,15 @@ class Upload extends Component {
     reader.onload = this.loadHandler;
     reader.onerror = this.errorHandler;
   }
+
+
   loadHandler = e => {
 
     const csv = e.target.result;
     this.processData(csv);
   }
-  // csv file contains header names as first lines
+
+  // csv file contains header names as first lines, represent obj keys 
   processData = (csv) => {
     const textLines = csv.split(/\r\n|\n/);
     let lines = [];
@@ -57,9 +65,9 @@ class Upload extends Component {
     this.setState({
       data: lines
     })
-
-
   }
+
+
   errorHandler = e => {
     if (e.target.error.name === "NotReadableError") {
       swal({
@@ -79,7 +87,6 @@ class Upload extends Component {
             <h2>Upload any CSV from your Company's Directory. This app will sift and organize your contacts so that you can access them easily.</h2>
             <input type="file" name="file" id="file" onChange={this.handleFiles} accept=".csv"/>
             <label htmlFor="file">Upload CSV File</label>
-
           </div>
           <Search data={this.state.data}/>
         </div>

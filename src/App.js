@@ -15,6 +15,7 @@ class App extends Component {
       data: []
     };
   }
+  // pass data state from upload component
   updateData = (data) => {
     this.setState({
       data
@@ -23,6 +24,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+      {/* Router implemented for future plans to have page where users can interact and graph data */}
         <Fragment>
           <Route exact path='/'  
             render={() => { return (<Upload updateData = {this.updateData}/>) }} />

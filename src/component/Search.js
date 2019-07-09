@@ -25,6 +25,7 @@ class Search extends Component {
     }
   }
 
+  // search through data obj, if first or last name contain string, return contact 
   searchContact = name => {
     const filtered = this.state.data.filter(item => {
       return item.First_name.toLowerCase().includes(name) || item.Last_name.toLowerCase().includes(name);
@@ -39,11 +40,15 @@ class Search extends Component {
       })
     }
   }
+
+  // handle change
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
+
+  // hand user submit
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.userInput){
@@ -56,12 +61,12 @@ class Search extends Component {
       });
     }
   }
+
   render() {
     return (
       <Fragment>
         <div className="searchContainer">
           <form onSubmit={this.handleSubmit}>
-              {/* <label htmlFor="search" className="userInputLabel">Find car owner in the company directory</label> */}
               <TextField 
               label='Find car owner in the company directory' 
               onChange={this.handleChange} 
