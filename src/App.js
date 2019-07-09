@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {
-  BrowserRouter as Router, 
+  HashRouter,
   Route
 } from 'react-router-dom';
 
@@ -23,13 +23,13 @@ class App extends Component {
   } 
   render() {
     return (
-      <Router>
+      <HashRouter>
       {/* Router implemented for future plans to have page where users can interact and graph data */}
         <Fragment>
           <Route exact path='/'  
             render={() => { return (<Upload updateData = {this.updateData}/>) }} />
         </Fragment>
-      </Router>
+      </HashRouter>
     );
   }
 }

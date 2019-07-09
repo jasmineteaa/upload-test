@@ -1,11 +1,13 @@
 {
   "name": "data-app",
+  "homepage": "https://jasmineteaa.github.io/upload-test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.2.0",
     "axios": "^0.19.0",
     "chart.js": "^2.8.0",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-chartjs-2": "^2.7.6",
     "react-dom": "^16.8.6",
@@ -17,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
