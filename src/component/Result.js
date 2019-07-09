@@ -1,13 +1,17 @@
 import React, {Component, Fragment} from 'react'; 
 import {data} from '../data';
 
+// import styles
+import { Card, CardContent, Typography} from '@material-ui/core';
+
+
 
 class Result extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data,
-      contacts: '',
+      contacts: [],
       filterInput: ''
     };
   }
@@ -52,7 +56,6 @@ class Result extends Component {
                 value={this.state.filterInput}
                 id="filter"
                 onChange={this.handleChange}
-                onKeyDown={this.onKeyDown}
               />
             </div>
             ): null
@@ -67,20 +70,22 @@ class Result extends Component {
                 Last_name:lastName, 
                 Email, 
                 Country,
-                Age
               } = item;
               return (
-                <li key={Id} className="contactCard">
-                  <h2 className="name">{firstName} {lastName}</h2>
-                  <p className="age">Age: {Age}</p>
-                  <p className="email">Email: <a href={`mailto:${Email}`}>{Email}</a></p>
-                  <p className="address">Address: {item["Street address"]}, {Country}</p>
-                  <p className="company">Company: <a rel="noopener noreferrer" target="_blank" href={`www.${item["Company Domain"]}`}>{item["Company Name"]}</a></p>
-                  <p className="carSpecs">Car Specifications: {item["Car Color"]} {item["Car Make"]} {item["Car Model"]}</p>
-                </li>
+                <Card>
+                  <CardContent>
+                    <li key={Id} className="contactCard">
+                      <Typography gutterBottom variant="headline" component="h2">{firstName} {lastName}</Typography>
+                      <Typography component="p">Email: <a href={`mailto:${Email}`}>{Email}</a></Typography>
+                      <Typography component="p">Address: {item["Street address"]}, {Country}</Typography>
+                      <Typography component="p">Company: <a rel="noopener noreferrer" target="_blank" href={`www.${item["Company Domain"]}`}>{item["Company Name"]}</a></Typography>
+                      <Typography component="p">Car Specifications: {item["Car Color"]} {item["Car Make"]} {item["Car Model"]}</Typography>
+                    </li>
+                  </CardContent>
+                </Card>
 
               )
-            }): (<p>your search returned no results</p>)
+            }): (<p>your search returned {this.props.contacts.length} results</p>)
           }
         </ul>
 

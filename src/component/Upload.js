@@ -4,11 +4,6 @@ import React, {Component, Fragment} from 'react';
 import Search from './Search';
 import swal from 'sweetalert';
 
-// import styles
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-
-
 
 class Upload extends Component {
   constructor(props) {
@@ -78,13 +73,16 @@ class Upload extends Component {
   render() {
     return (
       <Fragment>
-        <div className="upload">
-          <h1 Typography variant='display1' align='center' gutterBottom>React file upload</h1>
-          <label htmlFor="file" >Upload Csv to Company Directory</label>
-          <input type="file" name="file" id="file" onChange={this.handleFiles} accept=".csv"/>
-          <TextField label='Exercise' onChange={this.handleChange} margin='normal' /> 
+        <div className="wrapper">
+          <div className="upload">
+            <h1 Typography variant='display1' align='center' gutterBottom>Simple React Data Sorter</h1>
+            <h2>Upload any CSV from your Company's Directory. This app will sift and organize your contacts so that you can access them easily.</h2>
+            <input type="file" name="file" id="file" onChange={this.handleFiles} accept=".csv"/>
+            <label htmlFor="file">Upload CSV File</label>
+
+          </div>
+          <Search data={this.state.data}/>
         </div>
-        <Search data={this.state.data}/>
       </Fragment>
     );
   }

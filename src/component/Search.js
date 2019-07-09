@@ -4,8 +4,9 @@ import swal from 'sweetalert';
 // import components
 import Result from './Result';
 
-// Sorting, graphs, analytics are all allowed.We want to see a useful way to view this data
-// we are looking for a single page application
+// import styles
+import {TextField} from '@material-ui/core';
+
 
 class Search extends Component {
   constructor(props) {
@@ -23,14 +24,11 @@ class Search extends Component {
       })
     }
   }
-  // user submit form, search through data return contact 
-  // return result
-  // else error handling
+
   searchContact = name => {
     const filtered = this.state.data.filter(item => {
       return item.First_name.toLowerCase().includes(name) || item.Last_name.toLowerCase().includes(name);
     });
-    console.log(filtered);
     if (filtered.length) {
       this.setState({
         contacts: filtered
@@ -39,7 +37,6 @@ class Search extends Component {
       this.setState({
         contacts: []
       })
-      console.log("no search results")
     }
   }
   handleChange = e => {
@@ -64,16 +61,15 @@ class Search extends Component {
       <Fragment>
         <div className="searchContainer">
           <form onSubmit={this.handleSubmit}>
-              <label htmlFor="search" className="userInputLabel">Find car owner in the company directory</label>
-              <input 
-              type="text" 
-              className="userInput"
-              id="search"
-              name="userInput"
+              {/* <label htmlFor="search" className="userInputLabel">Find car owner in the company directory</label> */}
+              <TextField 
+              label='Find car owner in the company directory' 
+              onChange={this.handleChange} 
               value={this.state.userInput}
-              onChange={this.handleChange}
-              placeholder="search for a contact"
-              />
+              margin='normal' 
+              name="userInput"
+              fullWidth="true"
+              /> 
               <input type="submit" value="search"/>
           </form>
         </div>

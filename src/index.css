@@ -5,9 +5,122 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background: linear-gradient(60deg, #29323c 0%, #485563 100%);
+  background-size: cover;
+  color: whitesmoke;
+  height: 100vh;
+  font-size: 125%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.wrapper{
+  margin: 0 auto;
+  width: 80%;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+.upload {
+  padding-top: 5rem;
+}
+
+h2 {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 2rem;
+  font-size: 1.3rem;
+}
+
+input[type=file]{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+input[type="submit"],
+input[type=file] + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background: black;
+    display: inline-block;
+    cursor: pointer;
+    padding: 2rem;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+input[type="submit"]{
+  border: none;
+  width: 200px;
+}
+input[type="submit"]:hover,
+input[type=file]:focus + label,
+input[type=file] + label:hover {
+    background: #cb0a0a;
+}
+
+input[type=file]:focus + label {
+	outline: 1px dotted #000;
+}
+li {
+  list-style: none;
+}
+.MuiFormControl-fullWidth {
+    width: 50%;
+    margin: 3rem auto;
+    display: block;
+    border-radius: 2px;
+    border: transparent;
+}
+.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated {
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-fullWidth.MuiInput-fullWidth.MuiInputBase-formControl.MuiInput-formControl {
+  color: white;
+  border-bottom: 2px solid #ffffffa3;
+  font-size: 1.3rem;
+  padding-left: 2rem;
+}
+
+.MuiPaper-root.MuiPaper-elevation1.MuiCard-root.MuiPaper-rounded {
+  margin-bottom: 1rem;
+}
+
+.MuiTypography-root.MuiTypography-gutterBottom {
+  width: 100%;
+  padding-left: 0;
+  padding-bottom: 1rem;
+}
+
+.searchFilter {
+  padding: 2rem 0;
+}
+
+.searchFilter label {
+  margin-right: 1rem;
+}
+
+.searchFilter input{
+  background: transparent;
+  border: none;
+  color: white;
+  border-bottom: 2px solid white;
+  font-size: 1.3rem;
 }

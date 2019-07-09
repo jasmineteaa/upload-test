@@ -6,11 +6,7 @@ import {
 
 // import Components
 import Upload from './component/Upload';
-import Nav from './component/Nav';
-import Graph from './component/Graph';
 
-// import styles
-import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -28,13 +24,8 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <Nav />
-
           <Route exact path='/'  
             render={() => { return (<Upload updateData = {this.updateData}/>) }} />
-          <Route path='/graph' 
-            render={() => { return (<Graph data={this.state.data} />) }} />
-
         </Fragment>
       </Router>
     );
